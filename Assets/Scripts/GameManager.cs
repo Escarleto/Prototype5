@@ -7,19 +7,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Targets;
-    private readonly float SpawnRate = 1.0f;
+    private float SpawnRate = 1.0f;
     private int Score;
     [System.NonSerialized] public bool IsGameActive = true;
 
     [SerializeField] private TextMeshProUGUI ScoreTXT;
     [SerializeField] private TextMeshProUGUI GameOverTXT;
+    [SerializeField] private TextMeshProUGUI TitleTXT;
 
     private void Start()
     {
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0);
+        TitleTXT.gameObject.SetActive(true);
         GameOverTXT.gameObject.SetActive(false);
-        IsGameActive = true;
     }
 
     private IEnumerator SpawnTarget()
@@ -38,9 +37,18 @@ public class GameManager : MonoBehaviour
         ScoreTXT.text = "Score: " + Score;
     }
 
+    public void StartGame(int Difficulty)
+    {   
+        SpawnRate /= Difficulty;
+        IsGameActive = true;
+        Score = 0;
+        UpdateScore(0);
+        TitleTXT.gameObject.SetActive(false);
+        StartCoroutine(SpawnTarget());
+    }
+
     public void GameOver()
     {
-        Debug.Log("Gameover");
         GameOverTXT.gameObject.SetActive(true);
         IsGameActive = false;
     }
