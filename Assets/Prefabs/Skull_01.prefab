@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2070533677166936731}
   m_Layer: 0
   m_Name: Skull_01
-  m_TagString: Untagged
+  m_TagString: Bad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 6601538019107920666, guid: 70a1428e5f80a4866a779ef1ab9fe521, type: 3}
-  ScoreValue: -3
+  ScoreValue: 0
 --- !u!54 &5242886216378606162
 Rigidbody:
   m_ObjectHideFlags: 0

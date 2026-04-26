@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Target : MonoBehaviour
 {
@@ -42,14 +40,17 @@ public class Target : MonoBehaviour
     }
 
     private void OnMouseDown()
-    {
+    {   
+        if (Manager.IsGameActive == false) return;
         Manager.UpdateScore(ScoreValue);
         Instantiate(Explosion, transform.position, Explosion.transform.rotation);
+        if (gameObject.CompareTag("Bad")) Manager.GameOver();
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
+        if (gameObject.CompareTag("Bad")) Manager.GameOver();
         Destroy(gameObject);
-    }
+    }*/
 }
